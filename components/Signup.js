@@ -4,7 +4,7 @@ export default class SignUp extends Component {
     render() {
         return (
                 <div className="row m-3 p-3">
-                    <div className="col-6 rounded-lg bg-light mx-auto shadow-lg">
+                    <div className="col rounded-lg bg-light mx-auto shadow-lg">
                         <form>
                             <h3>Sign Up</h3>
 

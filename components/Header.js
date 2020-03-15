@@ -3,10 +3,7 @@ import { Navbar, Nav } from "react-bootstrap"
 
 const layoutStyle = {
   fontFamily: 'Arial, Helvetica, sans-serif',
-  letterSpacing:  '5px',
-  // wordSpacing: '20px',
   color: '#FFFFFF',
-  fontWeight: 700,
   textDecoration: 'none',
   fontStyle: 'normal',
   textTransform: 'uppercase',
@@ -25,9 +22,8 @@ const linkStyle = {
 
 const Header = () => (
   <div style={layoutStyle}>
-    <Navbar bg="dark" variant="dark">
-        <Navbar.Brand href="/">Project Nighthawk</Navbar.Brand>
-        <Nav className="mx-auto">
+    <Navbar fixed="top" bg="dark" variant="dark">
+        <Nav className="mr-auto">
           <Nav.Link href="/">Home</Nav.Link>
           <Nav.Link href="/about">About</Nav.Link>
           <Nav.Link href="/pricing">Pricing</Nav.Link>
