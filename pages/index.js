@@ -5,7 +5,7 @@ import MyLayout from '../components/MyLayout';
 
 
 const Home = () => (
-  <div className="container">
+  <>
     <Head>
       <title>Project Nighthawk</title>
       <link rel="icon" href="/favicon.ico" />
@@ -13,7 +13,7 @@ const Home = () => (
     </Head>
     <MyLayout>
     </MyLayout>
-  </div>
+  </>
 )
 
 export default Home
