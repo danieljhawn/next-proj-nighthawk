@@ -1,9 +1,15 @@
 import Header from './Header';
 import Footer from './Footer';
 
+const headerSpacer = {
+        marginTop: '60px' 
+}
+
 const Layout = props => (<>
     <Header />
-    {props.children}
+    <div style={headerSpacer}>
+        {props.children}
+    </div>
     <Footer />
 </>);
 
