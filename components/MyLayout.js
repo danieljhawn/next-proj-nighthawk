@@ -2,7 +2,8 @@ import Header from './Header';
 import Footer from './Footer';
 
 const headerSpacer = {
-        marginTop: '60px' 
+        marginTop: '50px',
+        marginBottom: '50px' 
 }
 
 const Layout = props => (<>
