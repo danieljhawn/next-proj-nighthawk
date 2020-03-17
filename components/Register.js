@@ -12,8 +12,8 @@ class Register extends Component {
             errors: {}
         }
 
-        this.onChange - this.onChange.bind(this)
-        this.onSubmit - this.onSubmit.bind(this)
+        this.onChange = this.onChange.bind(this)
+        this.onSubmit = this.onSubmit.bind(this)
     }
 
     onChange(e) {
@@ -42,10 +42,11 @@ class Register extends Component {
                             <h3>Sign Up</h3>
 
                             <div className="form-group">
-                                <label>First name</label>
+                                <label htmlFor="name">First name</label>
                                 <input 
                                     type="text" 
-                                    className="form-control" 
+                                    className="form-control"
+                                    name="first_name" 
                                     placeholder="First name"
                                     value= {this.state.first_name} 
                                     onChange= {this.onChange}
@@ -56,7 +57,8 @@ class Register extends Component {
                                 <label>Last name</label>
                                 <input 
                                     type="text" 
-                                    className="form-control" 
+                                    className="form-control"
+                                    name="last_name"
                                     placeholder="Last name" 
                                     value= {this.state.last_name} 
                                     onChange= {this.onChange}
@@ -68,6 +70,7 @@ class Register extends Component {
                                 <input 
                                     type="email" 
                                     className="form-control" 
+                                    name="email"
                                     placeholder="Enter email" 
                                     value= {this.state.email}
                                     onChange= {this.onChange}
@@ -79,6 +82,7 @@ class Register extends Component {
                                 <input 
                                     type="password" 
                                     className="form-control" 
+                                    name="password"
                                     placeholder="Enter password"
                                     value= {this.state.password}
                                     onChange= {this.onChange}
