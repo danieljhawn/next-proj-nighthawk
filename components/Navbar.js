@@ -12,7 +12,7 @@ function myNavbar() {
       <Nav.Link href="/pricing">Pricing</Nav.Link>
       <Nav.Link href="/contact">Contact</Nav.Link>
     </Nav>
-    <Nav.Link href="/Signup">Sign Up</Nav.Link> | <Nav.Link href="/Login">Log</Nav.Link>
+    <Nav.Link href="/Register">Sign Up</Nav.Link> | <Nav.Link href="/Login">Log In</Nav.Link>
 
   </Navbar>
       </>

@@ -17,6 +17,9 @@ class Register extends Component {
     }
 
     onChange(e) {
+        this.setState({ [e.target.name]: e.target.value })
+    }
+    onSubmit(e) {
         e.preventDefault()
 
         const newUser = {
@@ -76,7 +79,9 @@ class Register extends Component {
                                 <input 
                                     type="password" 
                                     className="form-control" 
-                                    placeholder="Enter password" 
+                                    placeholder="Enter password"
+                                    value= {this.state.password}
+                                    onChange= {this.onChange}
                                 />
                             </div>
 
