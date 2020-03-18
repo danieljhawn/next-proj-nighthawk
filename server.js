@@ -4,6 +4,7 @@ var bodyParser = require("body-parser")
 var app = express()
 var port = process.env.PORT || 3000
 
+
 app.use(bodyParser.json())
 app.use(cors())
 app.use(
@@ -11,8 +12,10 @@ app.use(
 )
 
 var Users = require("./routes/Users")
+var Stickerjob = require("./routes/Stickerjob");
 
 app.use("/users", Users)
+app.use("/api", Stickerjob)
 
 app.listen(port, function() {
     console.log("Server is running on port " + port)
