@@ -15,11 +15,13 @@ export const register = newUser => {
 
 export const login = user => {
     return axios
-        .post('users/login', {
+        .post('/api/login', {
             email: user.email,
             password: user.password
         })
         .then(response => {
+            console.log(response)
+            console.log(response.data)
             localStorage.setItem('usertoken', response.data)
             return response.data
         })
