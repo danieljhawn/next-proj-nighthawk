@@ -17,7 +17,7 @@ class Login extends Component {
     onChange(e) {
         this.setState({ [e.target.name]: e.target.value })
     }
-    onSubmit(e) {
+    onSubmit = (e) => {
         e.preventDefault()
 
         const user = {
@@ -36,7 +36,7 @@ class Login extends Component {
         return (
             <div className="row m-3 p-3">
                 <div className="col-6 rounded-lg bg-light mx-auto shadow-lg">
-                    <form>
+                    <form onSubmit={this.onSubmit}>
                         <h3>Sign In</h3>
 
                         <div className="form-group">
