@@ -1,5 +1,7 @@
 import React, { useState } from 'react';
 import { Form } from 'react-bootstrap';
+import axios from "axios";
+
 
 function StickerCalc() {
 
@@ -70,9 +72,29 @@ function StickerCalc() {
 
     function over25k(totalArea) {
         if (totalArea > 25000)
-        return "Please email us for a quote"
+            return "Please email us for a quote"
         else
-        return Math.ceil(cost)
+            return Math.ceil(cost)
+    }
+
+    function jobdata()  {
+        var data = {
+          width: width,
+          height: height,
+          shape: shape,
+          quantity: qty}
+          
+         console.log(data);
+
+axios.post("/api/jobsubmit", data, function ( err, res){
+    
+    if (err)
+    throw err;
+
+    console.log (res);
+
+
+    })
     }
 
 
@@ -126,14 +148,16 @@ function StickerCalc() {
                         <div> Sticker Area - {area} inches</div>
                         <div> Total Area - {totalArea} inches</div>
                         <div><strong> Total Cost - ${over25k(totalArea)} </strong></div>
+                        
+                        <button onClick = {jobdata} >Submit</button>
 
-                        {console.log("area - " + [area])}
+                        {/* {console.log("area - " + [area])}
                         {console.log("qty - " + [qty])}
                         {console.log("base - $" + [base])}
                         {console.log("total area - " + [totalArea])}
                         {console.log("cost - $" + [cost])}
                         {console.log("total cost - $" + [totalCost])}
-                        {console.log("shape - " + [shape])}
+                        {console.log("shape - " + [shape])} */}
                     </Form>
                 </div>
             </div>
