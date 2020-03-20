@@ -30,7 +30,8 @@ class Register extends Component {
         }
 
         register(newUser).then(res => {
-            this.props.history.push('/api/register')
+            // this.props.history.push('/api/register')
+            console.log("this worked")
         })
     }
 

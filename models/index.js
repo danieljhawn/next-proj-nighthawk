@@ -1,6 +1,5 @@
 'use strict';
 
-
 import user from './User';
 
 const Sequelize = require('sequelize');
