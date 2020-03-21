@@ -12,6 +12,7 @@ class Register extends Component {
             errors: {}
         }
 
+//no es6 syntax
         this.onChange = this.onChange.bind(this)
         this.onSubmit = this.onSubmit.bind(this)
     }
@@ -30,8 +31,10 @@ class Register extends Component {
         }
 
         register(newUser).then(res => {
+
             // this.props.history.push('/api/register')
             console.log("this worked")
+
         })
     }
 
