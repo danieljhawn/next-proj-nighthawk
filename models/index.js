@@ -1,7 +1,7 @@
 'use strict';
 
 import user from './User';
-import stickerJob from './stickerjob';
+import stickerJob from './stickerJob';
 
 const Sequelize = require('sequelize');
 const env = process.env.NODE_ENV || 'development';
