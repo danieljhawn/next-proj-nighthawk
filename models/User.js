@@ -1,6 +1,6 @@
 module.exports = (sequelize, Sequelize) => {
 
-    const Model = sequelize.define('user', {
+    const User = sequelize.define('user', {
         id: {
             type: Sequelize.INTEGER,
             primaryKey: true,
@@ -26,5 +26,9 @@ module.exports = (sequelize, Sequelize) => {
         timestamps: false
     })
 
-    return Model
+    User.associate = function(models) {
+        User.hasMany(models.stickerJob)
+    }
+
+    return User
 }

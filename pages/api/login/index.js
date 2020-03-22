@@ -1,5 +1,6 @@
 import db from "../../../models"
 import bcrypt from "bcrypt"
+import jwt from "jsonwebtoken"
 
 export default async function(req, res) {
 
@@ -11,7 +12,9 @@ export default async function(req, res) {
 
     const result = await bcrypt.compare(req.body.password, user.password)
     if (result) {
-        res.end(JSON.stringify(user));
+        const token = jwt.sign({ data: user }, "secret")
+        res.json(token)
+            // res.end(JSON.stringify(user));
     } else { res.end("login failed") }
 
 }
