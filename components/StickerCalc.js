@@ -9,7 +9,7 @@ function StickerCalc() {
     const [height, setHeight] = useState(0);
     const [qty, setQty] = useState(0);
     const [shape, setShape] = useState("Please Select A Shape");
-
+    const userId = 1
 
     const handleInputChange = event => {
         const { name, value } = event.target
@@ -77,24 +77,26 @@ function StickerCalc() {
             return Math.ceil(cost)
     }
 
-    function jobdata()  {
+    function jobdata() {
         var data = {
-          width: width,
-          height: height,
-          shape: shape,
-          quantity: qty}
-          
-         console.log(data);
+            width: width,
+            height: height,
+            shape: shape,
+            quantity: qty,
+            userId: userId
+        }
 
-axios.post("/api/jobsubmit", data, function ( err, res){
-    
-    if (err)
-    throw err;
+        console.log(data);
 
-    console.log (res);
+        axios.post("/api/jobPost", data, function (err, res) {
+
+            if (err)
+                throw err;
+
+            console.log(res);
 
 
-    })
+        })
     }
 
 
@@ -148,8 +150,8 @@ axios.post("/api/jobsubmit", data, function ( err, res){
                         <div> Sticker Area - {area} inches</div>
                         <div> Total Area - {totalArea} inches</div>
                         <div><strong> Total Cost - ${over25k(totalArea)} </strong></div>
-                        
-                        <button onClick = {jobdata} >Submit</button>
+
+                        <button type="submit" onClick={jobdata} >Submit</button>
 
                         {/* {console.log("area - " + [area])}
                         {console.log("qty - " + [qty])}

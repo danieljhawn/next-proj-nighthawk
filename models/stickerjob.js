@@ -1,6 +1,6 @@
 module.exports = (sequelize, Sequelize) => {
 
-    const stickerJob = sequelize.define('stickerjob', {
+    const Stickerjob = sequelize.define('stickerjob', {
         id: {
             type: Sequelize.INTEGER,
             primaryKey: true,
@@ -21,17 +21,22 @@ module.exports = (sequelize, Sequelize) => {
         totalCost: {
             type: Sequelize.DECIMAL
         },
+        userId: {
+            type: Sequelize.INTEGER
+            // allowNull: false
+        },
         created: {
             type: Sequelize.DATE,
             defaultValue: Sequelize.NOW
+
         }
     }, {
         timestamps: false
     })
 
-    stickerJob.associate = function(models) {
-        stickerJob.belongsTo(models.user)
-    }
+    // stickerJob.associate = function(models) {
+    //     stickerJob.belongsTo(models.user)
+    // }
 
-    return stickerJob
+    return Stickerjob
 }
