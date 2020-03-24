@@ -26,9 +26,9 @@ module.exports = (sequelize, Sequelize) => {
         timestamps: false
     })
 
-    User.associate = function(models) {
-        User.hasMany(models.stickerJob)
-    }
+    // User.associate = function(models) {
+    //     User.hasMany(models.stickerJob)
+    // }
 
     return User
 }

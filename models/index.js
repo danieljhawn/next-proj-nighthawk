@@ -1,7 +1,7 @@
 'use strict';
 
 import user from './User';
-import stickerJob from './stickerJob';
+import stickerjob from './Stickerjob';
 
 const Sequelize = require('sequelize');
 const env = process.env.NODE_ENV || 'development';
@@ -18,7 +18,7 @@ if (config.use_env_variable) {
 
 const db = {
     user: user(sequelize, Sequelize),
-    stickerJob: stickerJob(sequelize, Sequelize)
+    stickerjob: stickerjob(sequelize, Sequelize)
 };
 
 Object.keys(db).forEach(modelName => {

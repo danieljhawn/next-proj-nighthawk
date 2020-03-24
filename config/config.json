@@ -1,8 +1,8 @@
 {
     "development": {
         "username": "root",
-        "password": "TR!nity9812",
-        "database": "nodejs_login1",
+        "password": "8901alool",
+        "database": "nighthawk",
         "host": "127.0.0.1",
         "dialect": "mysql",
         "operatorsAliases": false

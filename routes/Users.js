@@ -21,6 +21,8 @@ users.post('/register', (req, res) => {
         created: today
     }
 
+    console.log("register route hit")
+
     User.findOne({
             where: {
                 email: req.body.email
