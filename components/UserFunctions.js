@@ -11,6 +11,10 @@ export const register = newUser => {
         .then(response => {
             console.log('Registered')
         })
+        .catch(err => {
+            console.log("Err sign up", err);
+            alert("This email already used");
+        });     
 }
 
 export const login = user => {

@@ -95,7 +95,7 @@ function StickerCalc() {
                 throw err;
 
             console.log(res);
-
+            
 
         })
     }
