@@ -1,9 +1,11 @@
 import Head from 'next/head'
 import Link from 'next/link';
 import MyLayout from '../components/MyLayout';
+import Profile from '../components/Profile';
 
 
-function Profile() {
+
+function ProfilePage() {
     return (<>
         <Head>
             <title>Project Nighthawk</title>
@@ -12,13 +14,10 @@ function Profile() {
         </Head>
         <MyLayout>
             <div className="col-6 rounded-lg bg-light mx-auto shadow-lg m-5 p-3">
-                <p>User's Name</p>
-                <p>Email Address</p>
-                <p>Phone Number</p>
-                <p>Shipping Address</p>
+                <Profile />
             </div>
         </MyLayout>
     </>)
 }
 
-export default Profile
+export default ProfilePage

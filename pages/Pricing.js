@@ -4,9 +4,6 @@ import MyLayout from '../components/MyLayout';
 import StickerCalc from '../components/StickerCalc';
 import axios from 'axios'
 
-
-
-
 function Pricing() {
 
     const [data, setData] = useState()

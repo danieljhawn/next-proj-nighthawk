@@ -83,12 +83,13 @@ function StickerCalc() {
             height: height,
             shape: shape,
             quantity: qty,
+            totalCost: totalCost,
             userId: userId
         }
 
         console.log(data);
 
-        axios.post("/api/jobPost", data, function (err, res) {
+        axios.post("/api/jobPost", data, { headers: {Authorization: `Bearer ${localStorage.getItem('usertoken')}`}}, function (err, res) {
 
             if (err)
                 throw err;
