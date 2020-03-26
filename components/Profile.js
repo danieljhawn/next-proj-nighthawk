@@ -38,9 +38,9 @@ class Profile extends Component {
     render() {
         return (<>
             <div className="container">
-                <div className="jumbotron mt-1">
+                <div className="mt-1">
                     <div className="col-12 col-lg-6 col-md-10  mx-auto">
-                        <h3 className="text-center"> Logged in as {this.state.email} </h3>
+                        <h4 className="text-center"> Logged in as {this.state.email} </h4>
                     </div>
                     
                 </div>

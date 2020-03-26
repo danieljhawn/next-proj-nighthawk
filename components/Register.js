@@ -6,8 +6,10 @@ class Register extends Component {
     constructor() {
         super()
         this.state = {
+            company: '',
             first_name: '',
             last_name: '',
+            phone: '',
             email: '',
             password: '',
             errors: {}
@@ -24,8 +26,10 @@ class Register extends Component {
         e.preventDefault()
 
         const newUser = {
+            company: this.state.company,
             first_name: this.state.first_name,
             last_name: this.state.last_name,
+            phone: this.state.phone,
             email: this.state.email,
             password: this.state.password
         }
@@ -48,6 +52,18 @@ class Register extends Component {
                             <h3>Sign Up</h3>
 
                             <div className="form-group">
+                                <label htmlFor="name">Company Name</label>
+                                <input 
+                                    type="text" 
+                                    className="form-control"
+                                    name="company" 
+                                    placeholder="Your Company"
+                                    value= {this.state.company} 
+                                    onChange= {this.onChange}
+                                />
+                            </div>
+
+                            <div className="form-group">
                                 <label htmlFor="name">First name</label>
                                 <input 
                                     type="text" 
@@ -67,6 +83,18 @@ class Register extends Component {
                                     name="last_name"
                                     placeholder="Last name" 
                                     value= {this.state.last_name} 
+                                    onChange= {this.onChange}
+                                />
+                            </div>
+
+                            <div className="form-group">
+                                <label>Phone Number</label>
+                                <input 
+                                    type="tel" 
+                                    className="form-control"
+                                    name="phone"
+                                    placeholder="Phone Number" 
+                                    value= {this.state.phone} 
                                     onChange= {this.onChange}
                                 />
                             </div>
