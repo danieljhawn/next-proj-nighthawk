@@ -44,7 +44,7 @@ class Profile extends Component {
                     </div>
                     
                 </div>
-                <div className="jumbotron mt-1">
+                <div className="mt-1 shadow rounded-lg p-3">
                     <div className="mx-auto">
                         <h1 className="text-center"> Your Sticker Jobs </h1>
                     </div>
