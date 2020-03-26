@@ -38,54 +38,43 @@ class Profile extends Component {
     render() {
         return (<>
             <div className="container">
-                <div className="jumbotron mt-1">
+                <div className="mt-1">
                     <div className="col-12 col-lg-6 col-md-10  mx-auto">
-                        <h1 className="text-center"> PROFILE </h1>
+                        <h4 className="text-center"> Logged in as {this.state.email} </h4>
                     </div>
-                    <table className="table mx-auto">
-                        <tbody>
-                            <tr>
-                                <td>First Name</td>
-                                <td>{this.state.first_name}</td>
-                            </tr>
-                            <tr>
-                                <td>Last Name</td>
-                                <td>{this.state.last_name}</td>
-                            </tr>
-                            <tr>
-                                <td>Email</td>
-                                <td>{this.state.email}</td>
-                            </tr>
-                        </tbody>
-                    </table>
+                    
                 </div>
-                <div className="jumbotron mt-1">
+                <div className="mt-1 shadow rounded-lg p-3">
                     <div className="mx-auto">
                         <h1 className="text-center"> Your Sticker Jobs </h1>
                     </div>
+                    
                     <table className="table mx-auto">
-                        <tbody>
+                        <thead>
                             <tr>
-                                <td>Order Number</td>
-                                <td>Width</td>
-                                <td>Height</td>
-                                <td>Shape</td>
-                                <td>Quantity</td>
-                                <td>Cost</td>
+                                <th>Order #</th>
+                                <th>Width</th>
+                                <th>Height</th>
+                                <th>Shape</th>
+                                <th>Quantity</th>
+                                <th>Cost</th>
+                                <th>Date</th>
                             </tr>
-                            
-                            {this.state.stickerjobs.map(job => 
-                            (
-                            <tr key={job.id}>
-                                <td>#{job.id}</td>
-                                <td>{job.width}"</td>
-                                <td>{job.height}"</td>
-                                <td>{job.shape}</td>
-                                <td>{job.quantity}</td>
-                                <td>${job.totalCost}</td>
-                            </tr>
-                            )
-                            ) }
+                        </thead>
+                        <tbody>
+                        {this.state.stickerjobs.reverse().map(job =>
+                                (
+                                    <tr key={job.id}>
+                                        <td>#{job.id}</td>
+                                        <td>{job.width}"</td>
+                                        <td>{job.height}"</td>
+                                        <td>{job.shape}</td>
+                                        <td>{job.quantity}</td>
+                                        <td>${job.totalCost}</td>
+                                        <td>{job.created.slice(0, 10)}</td>
+                                    </tr>
+                                )
+                            )}
                         </tbody>
                     </table>
                 </div>
