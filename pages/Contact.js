@@ -1,7 +1,5 @@
 import Head from 'next/head'
-import Link from 'next/link';
 import MyLayout from '../components/MyLayout';
-
 
 function Contact() {
     return (<>
@@ -14,7 +12,6 @@ function Contact() {
             <div>
                 <p>Phone Number</p>
                 <p>Email address</p>
-                {/* <StickerCard /><TshirtCard /> */}
             </div>
         </MyLayout>
     </>)

@@ -29,7 +29,6 @@ class Profile extends Component {
                         stickerjobs: jobs.data
                     })
                 })
-
         } else {
             //redirect to login, from front end
             Router.replace("/login")
@@ -39,11 +38,11 @@ class Profile extends Component {
     render() {
         return (<>
             <div className="container">
-                <div className="jumbotron mt-5">
-                    <div className="col-sm-8 mx-auto">
+                <div className="jumbotron mt-1">
+                    <div className="col-12 col-lg-6 col-md-10  mx-auto">
                         <h1 className="text-center"> PROFILE </h1>
                     </div>
-                    <table className="table col-md-6 mx-auto">
+                    <table className="table mx-auto">
                         <tbody>
                             <tr>
                                 <td>First Name</td>
@@ -57,16 +56,33 @@ class Profile extends Component {
                                 <td>Email</td>
                                 <td>{this.state.email}</td>
                             </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div className="jumbotron mt-1">
+                    <div className="mx-auto">
+                        <h1 className="text-center"> Your Sticker Jobs </h1>
+                    </div>
+                    <table className="table mx-auto">
+                        <tbody>
                             <tr>
-                                <td>Sticker Jobs</td>
+                                <td>Order Number</td>
+                                <td>Width</td>
+                                <td>Height</td>
+                                <td>Shape</td>
+                                <td>Quantity</td>
+                                <td>Cost</td>
                             </tr>
                             
                             {this.state.stickerjobs.map(job => 
                             (
-                            <tr>
-                                <td>{job.width}</td>
-                                <td>{job.height}</td>
+                            <tr key={job.id}>
+                                <td>#{job.id}</td>
+                                <td>{job.width}"</td>
+                                <td>{job.height}"</td>
                                 <td>{job.shape}</td>
+                                <td>{job.quantity}</td>
+                                <td>${job.totalCost}</td>
                             </tr>
                             )
                             ) }

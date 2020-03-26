@@ -1,5 +1,8 @@
 import React, { Component } from 'react'
 import { login } from './UserFunctions'
+import Router from 'next/router'
+
+// Router.replace("/profile")
 
 class Login extends Component {
     constructor() {
@@ -27,7 +30,7 @@ class Login extends Component {
 
         login(user).then(res => {
             if (res) {
-                // this.props.history.push('/profile')
+                Router.replace("/profile")
                 console.log(res)
             }
         })
@@ -36,7 +39,7 @@ class Login extends Component {
     render() {
         return (
             <div className="row m-3 p-3">
-                <div className="col-6 rounded-lg bg-light mx-auto shadow-lg">
+                <div className="col-lg-6 col-md-10 rounded-lg bg-light mx-auto shadow-lg">
                     <form onSubmit={this.onSubmit}>
                         <h3>Sign In</h3>
 

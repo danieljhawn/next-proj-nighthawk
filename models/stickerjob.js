@@ -28,7 +28,6 @@ module.exports = (sequelize, Sequelize) => {
         created: {
             type: Sequelize.DATE,
             defaultValue: Sequelize.NOW
-
         }
     }, {
         timestamps: false

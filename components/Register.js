@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import Router from 'next/router'
 import { register } from './UserFunctions'
 
 class Register extends Component {
@@ -30,8 +31,7 @@ class Register extends Component {
         }
 
         register(newUser).then(res => {
-            
-            console.log("this worked")
+            Router.replace("/login")
         })
         .catch(err => {
             console.log("Error",err)
@@ -43,7 +43,7 @@ class Register extends Component {
     render() {
         return (
                 <div className="row m-3 p-3">
-                    <div className="col rounded-lg bg-light mx-auto shadow-lg">
+                    <div className="col-lg-6 col-md-10 rounded-lg bg-light mx-auto shadow-lg">
                         <form noValidate onSubmit={this.onSubmit}>
                             <h3>Sign Up</h3>
 
@@ -96,7 +96,7 @@ class Register extends Component {
                             </div>
 
                             <button type="submit" className="btn btn-primary btn-block">Sign Up</button>
-                            <p className="forgot-password text-right">
+                            <p className="text-right">
                                 Already registered <a href="/login">sign in?</a>
                             </p>
                         </form>

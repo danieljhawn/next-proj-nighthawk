@@ -1,7 +1,4 @@
-// import StickerCard from '../components/StickerCard'
-// import TshirtCard from '../components/TshirtCard'
 import Head from 'next/head'
-import Link from 'next/link';
 import MyLayout from '../components/MyLayout';
 
 function About() {
@@ -13,9 +10,7 @@ function About() {
         </Head>
         <MyLayout>
             <div>
-                <p>Union Print shop, Austin Pride, blah blah blah</p>
                 <p>What We Do</p>
-                {/* <StickerCard /><TshirtCard /> */}
             </div>
         </MyLayout>
     </>)

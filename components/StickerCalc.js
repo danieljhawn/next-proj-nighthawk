@@ -2,7 +2,6 @@ import React, { useState } from 'react';
 import { Form } from 'react-bootstrap';
 import axios from "axios";
 
-
 function StickerCalc() {
 
     const [width, setWidth] = useState(0);
@@ -100,7 +99,6 @@ function StickerCalc() {
         })
     }
 
-
     const area = width * height;
     const totalArea = area * qty;
     const base = resetBase(totalArea);
@@ -109,7 +107,7 @@ function StickerCalc() {
 
     return (
         <div className="row">
-            <div className="p-3 m-3 bg-light col-6 mx-auto rounded-lg shadow-lg">
+            <div className="p-3 m-3 bg-light col-lg-6 col-md-10 mx-auto rounded-lg shadow-lg">
                 <div> Width </div>
                 <div className="">
                     <Form className="form">
@@ -154,13 +152,6 @@ function StickerCalc() {
 
                         <button type="submit" onClick={jobdata} >Submit</button>
 
-                        {/* {console.log("area - " + [area])}
-                        {console.log("qty - " + [qty])}
-                        {console.log("base - $" + [base])}
-                        {console.log("total area - " + [totalArea])}
-                        {console.log("cost - $" + [cost])}
-                        {console.log("total cost - $" + [totalCost])}
-                        {console.log("shape - " + [shape])} */}
                     </Form>
                 </div>
             </div>
