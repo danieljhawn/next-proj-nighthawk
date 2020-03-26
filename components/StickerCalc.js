@@ -107,7 +107,7 @@ function StickerCalc() {
 
     return (
         <div className="row">
-            <div className="p-3 m-3 bg-light col-6 mx-auto rounded-lg shadow-lg">
+            <div className="p-3 m-3 bg-light col-lg-6 col-md-10 mx-auto rounded-lg shadow-lg">
                 <div> Width </div>
                 <div className="">
                     <Form className="form">
