@@ -33,6 +33,11 @@ class Register extends Component {
         register(newUser).then(res => {
             Router.replace("/login")
         })
+        .catch(err => {
+            console.log("Error",err)
+        })
+
+
     }
 
     render() {
