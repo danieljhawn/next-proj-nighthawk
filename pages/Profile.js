@@ -13,7 +13,7 @@ function ProfilePage() {
             <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossOrigin="anonymous" />
         </Head>
         <MyLayout>
-            <div className="col-6 rounded-lg bg-light mx-auto shadow-lg m-5 p-3">
+            <div className="col-6 rounded-lg bg-light mx-auto shadow-lg p-5">
                 <Profile />
             </div>
         </MyLayout>

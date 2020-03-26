@@ -38,7 +38,7 @@ class Profile extends Component {
     render() {
         return (<>
             <div className="container">
-                <div className="mt-1">
+                <div className="">
                     <div className="col-12 col-lg-6 col-md-10  mx-auto">
                         <h4 className="text-center"> Logged in as {this.state.email} </h4>
                     </div>
@@ -79,6 +79,7 @@ class Profile extends Component {
                     </table>
                 </div>
             </div>
+            
         </>)
     }
 }
