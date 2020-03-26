@@ -39,10 +39,10 @@ class Profile extends Component {
         return (<>
             <div className="container">
                 <div className="jumbotron mt-1">
-                    <div className="col-sm-8 mx-auto">
+                    <div className="col-12 col-lg-6 col-md-10  mx-auto">
                         <h1 className="text-center"> PROFILE </h1>
                     </div>
-                    <table className="table col-md-6 mx-auto">
+                    <table className="table mx-auto">
                         <tbody>
                             <tr>
                                 <td>First Name</td>
@@ -60,10 +60,10 @@ class Profile extends Component {
                     </table>
                 </div>
                 <div className="jumbotron mt-1">
-                    <div className="col-sm-8 mx-auto">
+                    <div className="mx-auto">
                         <h1 className="text-center"> Your Sticker Jobs </h1>
                     </div>
-                    <table className="table col-md-6 mx-auto">
+                    <table className="table mx-auto">
                         <tbody>
                             <tr>
                                 <td>Order Number</td>

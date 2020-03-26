@@ -1,5 +1,8 @@
 import React, { Component } from 'react'
 import { login } from './UserFunctions'
+import Router from 'next/router'
+
+// Router.replace("/profile")
 
 class Login extends Component {
     constructor() {
@@ -27,7 +30,7 @@ class Login extends Component {
 
         login(user).then(res => {
             if (res) {
-                // this.props.history.push('/profile')
+                Router.replace("/profile")
                 console.log(res)
             }
         })
