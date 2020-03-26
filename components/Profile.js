@@ -29,7 +29,6 @@ class Profile extends Component {
                         stickerjobs: jobs.data
                     })
                 })
-
         } else {
             //redirect to login, from front end
             Router.replace("/login")
@@ -57,7 +56,6 @@ class Profile extends Component {
                                 <td>Email</td>
                                 <td>{this.state.email}</td>
                             </tr>
-
                         </tbody>
                     </table>
                 </div>

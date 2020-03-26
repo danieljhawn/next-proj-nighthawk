@@ -4,7 +4,7 @@ import jwt from "jsonwebtoken"
 import config from '../../../config/config.json'
 const env = process.env.NODE_ENV || 'development';
 
-export default async function(req, res) {
+export default async function (req, res) {
 
     switch (req.method) {
         case 'POST':
@@ -19,17 +19,15 @@ export default async function(req, res) {
             if (result) {
                 const token = jwt.sign({ id: user.id, email: user.email }, config[env].secretKey)
                 res.json({
-                        id: user.id,
-                        email: user.email,
-                        token
-                    })
-                    // res.end(JSON.stringify(user));
+                    id: user.id,
+                    email: user.email,
+                    token
+                })
             } else {
                 res.end("login failed")
             }
-
             break;
-
+            
         default:
             break;
     }

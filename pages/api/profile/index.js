@@ -12,15 +12,12 @@ export default async function(req, res) {
         console.log(userData)
         if (err) {
             res.send("error");
-
         }
-        // console.log("backend stickerjob", userData);
         if (userData) {
             stickerjob = await db.stickerjob.findAll({
                 where: {
                     userId: userData.id
                 }
-
             });
             console.log(stickerjob)
             res.json(stickerjob);
