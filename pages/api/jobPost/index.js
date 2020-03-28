@@ -1,34 +1,30 @@
-import bcrypt from 'bcrypt'
 import db from "../../../models"
-import jwt from "jsonwebtoken"
-import config from '../../../config/config.json'
-const env = process.env.NODE_ENV || 'development';
+import Auth from '../../../util/auth'  
 
-export default async function(req, res) {
-    const token = req.headers.authorization.split(' ')[1]
-    console.log("this is our token ", token)
-    const stickerjob = {}
+export default async function (req, res) {
+	// Only people who are authenticated can use this route
+	Auth(req, res);
 
-    jwt.verify(token, config[env].secretKey, async(err, userData) => {
-        console.log(userData)
-        if (err) {
-            res.send("error");
-            console.log("verify is not working")
-        }
-        if (userData) {
-            console.log("job created")
-            stickerjob = await db.stickerjob.create({
-                width: req.body.width,
-                height: req.body.height,
-                shape: req.body.shape,
-                quantity: req.body.quantity,
-                totalCost: req.body.totalCost,
-                userId: userData.id
-
-            });
-        }
-    })
-
-    res.end(JSON.stringify(stickerjob));
-
+	switch (req.method) {
+		case 'POST':
+			const stickerjob = await db.stickerjob.create({
+				width: req.body.width,
+				height: req.body.height,
+				shape: req.body.shape,
+				quantity: req.body.quantity,
+				totalCost: req.body.totalCost,
+				userId: req.auth.id
+			});
+			res.json(stickerjob);
+			break;
+		case 'GET':
+		default:
+			const jobs = await db.stickerjob.findAll({
+				where: {
+					userId: req.auth.id
+				}
+			});
+			res.json(jobs);
+			break;
+	}
 }
