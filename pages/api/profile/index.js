@@ -8,7 +8,7 @@ export default async function(req, res) {
     const token = req.headers.authorization.split(' ')[1]
     let stickerjob = null;
 
-    jwt.verify(token, config[env].secretKey, async(err, userData) => {
+    jwt.verify(token, process.env.secretKey, async(err, userData) => {
         console.log(userData)
         if (err) {
             res.send("error");
