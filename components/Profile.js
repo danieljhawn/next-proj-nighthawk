@@ -15,7 +15,7 @@ class Profile extends Component {
             email: '',
             stickerjobs: [],
             errors: {},
-            showModal: true,
+            showModal: false,
             currentJob: {}
         }
     }
@@ -40,7 +40,7 @@ class Profile extends Component {
     }
 
     componentDidMount() {
-        console.log("component mounted")
+        // console.log("component mounted")
         this.getJobs();
     }
 
@@ -77,7 +77,7 @@ class Profile extends Component {
 
             <Modal show={this.state.showModal} onHide={this.closeModal}>
                 <Modal.Header closeButton>
-                    <Modal.Title>Modal heading</Modal.Title>
+                    <Modal.Title>Edit Job</Modal.Title>
                 </Modal.Header>
                 <Modal.Body>
                     <StickerUpdate job={this.state.currentJob}/>
@@ -91,7 +91,7 @@ class Profile extends Component {
 
             <div className="container">
                 <div className="mt-1">
-                    <div className="col-12 col-lg-6 col-md-10  mx-auto">
+                    <div className="mx-auto">
                         <h4 className="text-center"> Logged in as {this.state.email} </h4>
                     </div>
 
@@ -116,7 +116,7 @@ class Profile extends Component {
                             </tr>
                         </thead>
                         <tbody>
-                            {console.log("look here", this.state.stickerjobs)}
+                            {/* {console.log("look here", this.state.stickerjobs)} */}
                             {this.state.stickerjobs.reverse().map(job =>
                                 (
                                     <tr key={job.id}>

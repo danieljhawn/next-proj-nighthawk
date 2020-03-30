@@ -3,7 +3,7 @@ import { Form } from 'react-bootstrap';
 import axios from "axios";
 
 function StickerUpdate(props) {
-console.log("job props", props.job)
+// console.log("job props", props.job)
     const [width, setWidth] = useState(props.job.width);
     const [height, setHeight] = useState(props.job.height);
     const [qty, setQty] = useState(props.job.quantity);
@@ -86,14 +86,13 @@ console.log("job props", props.job)
             userId: userId
         }
 
-        console.log(data);
+        console.log("THIS IS MY DATA", data);
 
-        axios.put("/api/jobPost"+ params.id , data, { headers: {Authorization: `Bearer ${localStorage.getItem('usertoken')}`}}, function (err, res) {
+        axios.put("/api/jobPost/"+ props.job.id , data, { headers: {Authorization: `Bearer ${localStorage.getItem('usertoken')}`}}, function (err, res) {
+            console.log("CHECK ME OUT!")
+            if (err) console.log("err");
 
-            if (err)
-                throw err;
-
-            console.log(res);
+            console.log("BACKEND DATA", res.data);
             
         })
     }
@@ -106,7 +105,7 @@ console.log("job props", props.job)
 
     return (
         <div className="row">
-            <div className="p-3 m-3 bg-light col-lg-6 col-md-10 mx-auto rounded-lg shadow-lg">
+            <div className="p-3 m-3 mx-auto rounded-lg shadow-lg">
                 <div> Width </div>
                 <div className="">
                     <Form className="form">
