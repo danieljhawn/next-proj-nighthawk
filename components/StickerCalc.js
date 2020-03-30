@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Form } from 'react-bootstrap';
+import { Form, Alert } from 'react-bootstrap';
 import axios from "axios";
 
 function StickerCalc() {
@@ -8,6 +8,9 @@ function StickerCalc() {
     const [height, setHeight] = useState(0);
     const [qty, setQty] = useState(0);
     const [shape, setShape] = useState("Please Select A Shape");
+    const [showAlert, setShowAlert] = useState(false);
+    const [showFailAlert, setShowFailAlert] = useState(false);
+
     const userId = 1
 
     const handleInputChange = event => {
@@ -77,6 +80,7 @@ function StickerCalc() {
     }
 
     function jobdata() {
+        event.preventDefault()
         var data = {
             width: width,
             height: height,
@@ -86,17 +90,36 @@ function StickerCalc() {
             userId: userId
         }
 
-        console.log(data);
-
-        axios.post("/api/jobPost", data, { headers: {Authorization: `Bearer ${localStorage.getItem('usertoken')}`}}, function (err, res) {
-
-            if (err)
-                throw err;
-
-            console.log(res);
-            
-
+        axios.post("/api/jobPost", data, { headers: { Authorization: `Bearer ${localStorage.getItem('usertoken')}` } })
+        .then( function (res) {
+            setShowAlert(true);
         })
+        .catch((err) => {
+            console.log("sending failed");
+            setShowFailAlert(true);
+        })
+    }
+
+    function AlertSuccess() {
+        if (showAlert) {
+            return (
+                <Alert variant="success" onClose={() => setShowAlert(false)} dismissible>
+                    <Alert.Heading>Estimate Saved!</Alert.Heading>
+                </Alert>
+            );
+        }
+    }
+    function AlertFailure() {
+        if (showFailAlert) {
+            return (
+                <Alert variant="danger" onClose={() => setShowFailAlert(false)} dismissible>
+                    <Alert.Heading>Job Post Failed</Alert.Heading>
+                    <p>
+                        Make sure that you entered all the details for your sticker
+                    </p>
+                </Alert>
+            );
+        }
     }
 
     const area = width * height;
@@ -108,6 +131,8 @@ function StickerCalc() {
     return (
         <div className="row">
             <div className="p-3 m-3 bg-light col-lg-6 col-md-10 mx-auto rounded-lg shadow-lg">
+            {AlertSuccess()}
+            {AlertFailure()}
                 <div> Width </div>
                 <div className="">
                     <Form className="form">
@@ -151,7 +176,6 @@ function StickerCalc() {
                         <div><strong> Total Cost - ${over25k(totalArea)} </strong></div>
 
                         <button type="submit" onClick={jobdata} >Submit</button>
-
                     </Form>
                 </div>
             </div>

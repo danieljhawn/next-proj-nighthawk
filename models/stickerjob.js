@@ -7,10 +7,10 @@ module.exports = (sequelize, Sequelize) => {
             autoIncrement: true
         },
         width: {
-            type: Sequelize.INTEGER
+            type: Sequelize.DECIMAL(4,2)
         },
         height: {
-            type: Sequelize.INTEGER
+            type: Sequelize.DECIMAL(4,2)
         },
         shape: {
             type: Sequelize.STRING

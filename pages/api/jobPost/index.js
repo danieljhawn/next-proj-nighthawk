@@ -15,6 +15,7 @@ export default async function (req, res) {
 				totalCost: req.body.totalCost,
 				userId: req.auth.id
 			});
+			console.log("STICKERJOB", stickerjob)
 			res.json(stickerjob);
 			break;
 		case 'GET':
