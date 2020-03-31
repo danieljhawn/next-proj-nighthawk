@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { Form, Alert } from 'react-bootstrap';
 import axios from "axios";
+import { loadFirebase } from '../firebase/firedatabase.js';
 
 function StickerCalc() {
 
@@ -12,6 +13,7 @@ function StickerCalc() {
     const [showFailAlert, setShowFailAlert] = useState(false);
 
     const userId = 1
+    const fileInput = React.createRef()
 
     const handleInputChange = event => {
         const { name, value } = event.target
@@ -97,6 +99,7 @@ function StickerCalc() {
         .catch((err) => {
             console.log("sending failed");
             setShowFailAlert(true);
+
         })
     }
 
@@ -127,6 +130,75 @@ function StickerCalc() {
     const base = resetBase(totalArea);
     const cost = totalArea * base;
     const totalCost = cost * shapeMulti(cost);
+
+
+    const upload = (e) => {
+        // const uploader = fileInput.current.focus()
+        var file = e.target.files[0];
+        console.log(file);
+
+        //Create a storage ref
+        var storageRef = loadFirebase().storage().ref("nighthawk_uploads/" + file.name);
+
+        //Upload file 
+        var task = storageRef.put(file);
+
+        //Update progress bar
+        task.on("state_changed",
+            function progress(snapshot) {
+                var percentage = (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
+                uploader.value = percentage;
+            },
+
+            function error(err) {
+
+            },
+
+            function complete() {
+
+            }
+        )
+
+        console.log(upload);
+    }
+
+
+    //Get Elements
+    // var uploader = document.getElementById("uploader");
+    // var fileButton = document.getElementById("fileButton");
+
+    //Listen for file selection
+    // fileButton.addEventListener("change", function (e) {
+
+    //     //Get file
+    //     var file = e.target.files[0];
+
+    //     //Create a storage ref
+    //     var storageRef = firebase.storage().ref("nighthawk_uploads/" + file.name);
+
+    //     //Upload file 
+    //     var task = storageRef.put(file);
+
+    //     //Update progress bar
+    //     task.on("state_changed",
+    //         function progress(snapshot) {
+    //             var percentage = (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
+    //             uploader.value = percentage;
+    //         },
+
+    //         function error(err) {
+
+    //         },
+
+    //         function complete() {
+
+    //         }
+    //     )
+
+    // });
+
+
+
 
     return (
         <div className="row">
@@ -168,7 +240,9 @@ function StickerCalc() {
                             placeholder="100" />
                         <br /> <br />
 
-                        <input type="file" className="shadow rounded" />< br />< br />
+
+                        <progress value="0" max="100" id="uploader">0%</progress>
+                        <input id="fileButton" onChange={upload} type="file" value="upload" className="shadow rounded" />< br />< br />
 
                         <div> Shape - {shape}</div>
                         <div> Sticker Area - {area} inches</div>

@@ -2,7 +2,17 @@ import Head from 'next/head'
 import Link from 'next/link';
 import Login from '../components/Login';
 import MyLayout from '../components/MyLayout';
+// import {LoadDB} from "../firebase/firedatabase.js;
+// import { loadFirebase } from '../firebase/firedatabase.js';
 
+// export default class Index extends React.Component{
+//   static async getInitialProps() {
+//     let firebase = await loadFirebase()
+//     let db = firebase.firestore() 
+//     db.
+
+//     return{}
+//   }
 
 const Home = () => (
   <>
