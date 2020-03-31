@@ -96,12 +96,12 @@ class Profile extends Component {
                     </div>
 
                 </div>
-                <div className="table-responsive mt-1 shadow rounded-lg p-3">
+                <div className="mt-1 table-responsive shadow rounded-lg p-3">
                     <div className="">
                         <h1 className="text-center"> Your Sticker Jobs </h1>
                     </div>
 
-                    <table className="table">
+                    <table className="table mx-auto">
                         <thead>
                             <tr>
                                 <th>Order #</th>
