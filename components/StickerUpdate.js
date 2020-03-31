@@ -1,19 +1,14 @@
 import React, { useState } from 'react';
-import { Form, Alert } from 'react-bootstrap';
+import { Form } from 'react-bootstrap';
 import axios from "axios";
-import { loadFirebase } from '../firebase/firedatabase.js';
 
-function StickerCalc() {
-
-    const [width, setWidth] = useState(0);
-    const [height, setHeight] = useState(0);
-    const [qty, setQty] = useState(0);
-    const [shape, setShape] = useState("Please Select A Shape");
-    const [showAlert, setShowAlert] = useState(false);
-    const [showFailAlert, setShowFailAlert] = useState(false);
-
+function StickerUpdate(props) {
+// console.log("job props", props.job)
+    const [width, setWidth] = useState(props.job.width);
+    const [height, setHeight] = useState(props.job.height);
+    const [qty, setQty] = useState(props.job.quantity);
+    const [shape, setShape] = useState(props.job.shape);
     const userId = 1
-    const fileInput = React.createRef()
 
     const handleInputChange = event => {
         const { name, value } = event.target
@@ -82,7 +77,6 @@ function StickerCalc() {
     }
 
     function jobdata() {
-        event.preventDefault()
         var data = {
             width: width,
             height: height,
@@ -92,37 +86,15 @@ function StickerCalc() {
             userId: userId
         }
 
-        axios.post("/api/jobPost", data, { headers: { Authorization: `Bearer ${localStorage.getItem('usertoken')}` } })
-        .then( function (res) {
-            setShowAlert(true);
-        })
-        .catch((err) => {
-            console.log("sending failed");
-            setShowFailAlert(true);
+        console.log("THIS IS MY DATA", data);
 
-        })
-    }
+        axios.put("/api/jobPost/"+ props.job.id , data, { headers: {Authorization: `Bearer ${localStorage.getItem('usertoken')}`}}, function (err, res) {
+            console.log("CHECK ME OUT!")
+            if (err) console.log("err");
 
-    function AlertSuccess() {
-        if (showAlert) {
-            return (
-                <Alert variant="success" onClose={() => setShowAlert(false)} dismissible>
-                    <Alert.Heading>Estimate Saved!</Alert.Heading>
-                </Alert>
-            );
-        }
-    }
-    function AlertFailure() {
-        if (showFailAlert) {
-            return (
-                <Alert variant="danger" onClose={() => setShowFailAlert(false)} dismissible>
-                    <Alert.Heading>Job Post Failed</Alert.Heading>
-                    <p>
-                        Make sure that you entered all the details for your sticker
-                    </p>
-                </Alert>
-            );
-        }
+            console.log("BACKEND DATA", res.data);
+            
+        })
     }
 
     const area = width * height;
@@ -131,80 +103,9 @@ function StickerCalc() {
     const cost = totalArea * base;
     const totalCost = cost * shapeMulti(cost);
 
-
-    const upload = (e) => {
-        // const uploader = fileInput.current.focus()
-        var file = e.target.files[0];
-        console.log(file);
-
-        //Create a storage ref
-        var storageRef = loadFirebase().storage().ref("nighthawk_uploads/" + file.name);
-
-        //Upload file 
-        var task = storageRef.put(file);
-
-        //Update progress bar
-        task.on("state_changed",
-            function progress(snapshot) {
-                var percentage = (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
-                uploader.value = percentage;
-            },
-
-            function error(err) {
-
-            },
-
-            function complete() {
-
-            }
-        )
-
-        console.log(upload);
-    }
-
-
-    //Get Elements
-    // var uploader = document.getElementById("uploader");
-    // var fileButton = document.getElementById("fileButton");
-
-    //Listen for file selection
-    // fileButton.addEventListener("change", function (e) {
-
-    //     //Get file
-    //     var file = e.target.files[0];
-
-    //     //Create a storage ref
-    //     var storageRef = firebase.storage().ref("nighthawk_uploads/" + file.name);
-
-    //     //Upload file 
-    //     var task = storageRef.put(file);
-
-    //     //Update progress bar
-    //     task.on("state_changed",
-    //         function progress(snapshot) {
-    //             var percentage = (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
-    //             uploader.value = percentage;
-    //         },
-
-    //         function error(err) {
-
-    //         },
-
-    //         function complete() {
-
-    //         }
-    //     )
-
-    // });
-
-
-
-
     return (
         <div className="row">
-            <div className="p-3 m-3 bg-light col-lg-6 col-md-10 mx-auto rounded-lg shadow-lg">
-            {AlertSuccess()}
-            {AlertFailure()}
+            <div className="p-3 m-3 mx-auto rounded-lg shadow-lg">
                 <div> Width </div>
                 <div className="">
                     <Form className="form">
@@ -240,9 +141,7 @@ function StickerCalc() {
                             placeholder="100" />
                         <br /> <br />
 
-
-                        <progress value="0" max="100" id="uploader">0%</progress>
-                        <input id="fileButton" onChange={upload} type="file" value="upload" className="shadow rounded" />< br />< br />
+                        <input type="file" className="shadow rounded" />< br />< br />
 
                         <div> Shape - {shape}</div>
                         <div> Sticker Area - {area} inches</div>
@@ -250,6 +149,7 @@ function StickerCalc() {
                         <div><strong> Total Cost - ${over25k(totalArea)} </strong></div>
 
                         <button type="submit" onClick={jobdata} >Submit</button>
+
                     </Form>
                 </div>
             </div>
@@ -257,4 +157,4 @@ function StickerCalc() {
     )
 }
 
-export default StickerCalc
+export default StickerUpdate

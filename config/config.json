@@ -1,12 +1,8 @@
 {
     "development": {
-        "username": "root",
-        "password": "8901alool",
-        "database": "nighthawk",
         "host": "127.0.0.1",
         "dialect": "mysql",
-        "operatorsAliases": false,
-        "secretKey": "3YIEErCd7NMytqvnLJJsucwmCQHt3Divirb0W9q27M_412Eox12H6F65OKU6zwhDf0FG5Su_y3Cv5eeTHw6AWo2e18PwS1kSgCc5281zEY"
+        "operatorsAliases": false
     },
     "test": {
         "username": "root",
