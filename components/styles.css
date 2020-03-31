@@ -220,6 +220,10 @@ table {
     border-collapse: collapse
 }
 
+.tableWrap {
+    width: max-content
+}
+
 caption {
     padding-top: .75rem;
     padding-bottom: .75rem;

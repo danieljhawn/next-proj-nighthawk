@@ -91,17 +91,17 @@ class Profile extends Component {
 
             <div className="container">
                 <div className="mt-1">
-                    <div className="mx-auto">
+                    <div className="">
                         <h4 className="text-center"> Logged in as {this.state.email} </h4>
                     </div>
 
                 </div>
-                <div className="mt-1 shadow rounded-lg p-3">
-                    <div className="mx-auto">
+                <div className="table-responsive mt-1 shadow rounded-lg p-3">
+                    <div className="">
                         <h1 className="text-center"> Your Sticker Jobs </h1>
                     </div>
 
-                    <table className="table mx-auto">
+                    <table className="table">
                         <thead>
                             <tr>
                                 <th>Order #</th>

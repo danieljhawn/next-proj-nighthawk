@@ -16,7 +16,7 @@ function Pricing() {
             }
         })
         .then(response => {
-            console.log(response.data)
+            // console.log(response.data)
             setData(response.data)
         })
     }, [])

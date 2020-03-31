@@ -10,7 +10,6 @@ function StickerCalc() {
     const [shape, setShape] = useState("Please Select A Shape");
     const [showAlert, setShowAlert] = useState(false);
     const [showFailAlert, setShowFailAlert] = useState(false);
-
     const userId = 1
 
     const handleInputChange = event => {
@@ -92,6 +91,10 @@ function StickerCalc() {
 
         axios.post("/api/jobPost", data, { headers: { Authorization: `Bearer ${localStorage.getItem('usertoken')}` } })
         .then( function (res) {
+            setHeight(0)
+            setWidth(0)
+            setQty(0)
+            setShape("Please Select A Shape")
             setShowAlert(true);
         })
         .catch((err) => {
@@ -105,6 +108,7 @@ function StickerCalc() {
             return (
                 <Alert variant="success" onClose={() => setShowAlert(false)} dismissible>
                     <Alert.Heading>Estimate Saved!</Alert.Heading>
+                    <p>Check the Profile page to see a list of your estimates</p>
                 </Alert>
             );
         }
