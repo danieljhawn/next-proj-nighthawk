@@ -90,18 +90,10 @@ class Profile extends Component {
             </Modal>
 
             <div className="container">
-                <div className="mt-1">
-                    <div className="mx-auto">
-                        <h4 className="text-center"> Logged in as {this.state.email} </h4>
-                    </div>
-
-                </div>
-                <div className="mt-1 shadow rounded-lg p-3">
-                    <div className="mx-auto">
-                        <h1 className="text-center"> Your Sticker Jobs </h1>
-                    </div>
-
-                    <table className="table mx-auto">
+                <h4 className="text-center"> Logged in as {this.state.email} </h4>
+                <div className="mt-1 table shadow rounded-lg p-3">
+                    <h1 className="text-center"> Your Sticker Jobs </h1>
+                    <table className="table-responsive mx-auto">
                         <thead>
                             <tr>
                                 <th>Order #</th>

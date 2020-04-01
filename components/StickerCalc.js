@@ -94,6 +94,10 @@ function StickerCalc() {
 
         axios.post("/api/jobPost", data, { headers: { Authorization: `Bearer ${localStorage.getItem('usertoken')}` } })
         .then( function (res) {
+            setHeight(0)
+            setWidth(0)
+            setQty(0)
+            setShape("Please Select A Shape")
             setShowAlert(true);
         })
         .catch((err) => {
@@ -132,35 +136,35 @@ function StickerCalc() {
     const totalCost = cost * shapeMulti(cost);
 
 
-    const upload = (e) => {
-        // const uploader = fileInput.current.focus()
-        var file = e.target.files[0];
-        console.log(file);
+    // const upload = (e) => {
+    //     // const uploader = fileInput.current.focus()
+    //     var file = e.target.files[0];
+    //     console.log(file);
 
-        //Create a storage ref
-        var storageRef = loadFirebase().storage().ref("nighthawk_uploads/" + file.name);
+    //     //Create a storage ref
+    //     var storageRef = loadFirebase().storage().ref("nighthawk_uploads/" + file.name);
 
-        //Upload file 
-        var task = storageRef.put(file);
+    //     //Upload file 
+    //     var task = storageRef.put(file);
 
-        //Update progress bar
-        task.on("state_changed",
-            function progress(snapshot) {
-                var percentage = (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
-                uploader.value = percentage;
-            },
+    //     //Update progress bar
+    //     task.on("state_changed",
+    //         function progress(snapshot) {
+    //             var percentage = (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
+    //             uploader.value = percentage;
+    //         },
 
-            function error(err) {
+    //         function error(err) {
 
-            },
+    //         },
 
-            function complete() {
+    //         function complete() {
 
-            }
-        )
+    //         }
+    //     )
 
-        console.log(upload);
-    }
+    //     console.log(upload);
+    // }
 
 
     //Get Elements
@@ -240,9 +244,8 @@ function StickerCalc() {
                             placeholder="100" />
                         <br /> <br />
 
-
-                        <progress value="0" max="100" id="uploader">0%</progress>
-                        <input id="fileButton" onChange={upload} type="file" value="upload" className="shadow rounded" />< br />< br />
+                        {/* <progress value="0" max="100" id="uploader">0%</progress> */}
+                        {/* <input id="fileButton" onChange={upload} type="file" value="upload" className="shadow rounded" />< br />< br /> */}
 
                         <div> Shape - {shape}</div>
                         <div> Sticker Area - {area} inches</div>
