@@ -1,13 +1,14 @@
 import React, { useState } from 'react';
-import { Form } from 'react-bootstrap';
+import { Form, Alert } from 'react-bootstrap';
 import axios from "axios";
 
 function StickerUpdate(props) {
-// console.log("job props", props.job)
     const [width, setWidth] = useState(props.job.width);
     const [height, setHeight] = useState(props.job.height);
     const [qty, setQty] = useState(props.job.quantity);
     const [shape, setShape] = useState(props.job.shape);
+    const [showAlert, setShowAlert] = useState(false);
+    const [showFailAlert, setShowFailAlert] = useState(false);
     const userId = 1
 
     const handleInputChange = event => {
@@ -77,6 +78,7 @@ function StickerUpdate(props) {
     }
 
     function jobdata() {
+        event.preventDefault();
         var data = {
             width: width,
             height: height,
@@ -88,13 +90,22 @@ function StickerUpdate(props) {
 
         console.log("THIS IS MY DATA", data);
 
-        axios.put("/api/jobPost/"+ props.job.id , data, { headers: {Authorization: `Bearer ${localStorage.getItem('usertoken')}`}}, function (err, res) {
-            console.log("CHECK ME OUT!")
-            if (err) console.log("err");
+        axios.put("/api/jobPost/" + props.job.id, data, { headers: { Authorization: `Bearer ${localStorage.getItem('usertoken')}` } })
+            .then(
+                function (res) {
+                    props.setShowAlert(true)
+                    setTimeout(() => {
+                        props.closeModal()
+                        location.reload();
+                    }, 3000)
 
-            console.log("BACKEND DATA", res.data);
-            
-        })
+                }
+            ).catch(
+                function (err) {
+                    props.setShowFailAlert(true)
+                    // console.log("ERROR")
+                }
+            )
     }
 
     const area = width * height;

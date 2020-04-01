@@ -1,13 +1,12 @@
 import db from "../../../models"
 import jwt from "jsonwebtoken"
 
-export default async function(req, res) {
+export default function(req, res) {
 
     const token = req.headers.authorization.split(' ')[1]
     let stickerjob = null;
 
     jwt.verify(token, process.env.SECRET_KEY, async(err, userData) => {
-        console.log(userData)
         if (err) {
             res.send("error");
         }
@@ -17,9 +16,8 @@ export default async function(req, res) {
                     userId: userData.id
                 }
             });
-            console.log(stickerjob)
             res.json(stickerjob);
-        }
+        } else {res.send("STRING")}
     })
 
 }

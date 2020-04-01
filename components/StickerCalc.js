@@ -2,6 +2,8 @@ import React, { useState } from 'react';
 import { Form, Alert } from 'react-bootstrap';
 import axios from "axios";
 import { loadFirebase } from '../firebase/firedatabase.js';
+import AlertSuccess from '../components/AlertSuccess'
+import AlertFailure from '../components/AlertFailure'
 
 function StickerCalc() {
 
@@ -93,36 +95,18 @@ function StickerCalc() {
         }
 
         axios.post("/api/jobPost", data, { headers: { Authorization: `Bearer ${localStorage.getItem('usertoken')}` } })
-        .then( function (res) {
-            setShowAlert(true);
-        })
-        .catch((err) => {
-            console.log("sending failed");
-            setShowFailAlert(true);
+            .then(function (res) {
+                setHeight(0)
+                setWidth(0)
+                setQty(0)
+                setShape("Please Select A Shape")
+                setShowAlert(true);
+            })
+            .catch((err) => {
+                console.log("sending failed");
+                setShowFailAlert(true);
 
-        })
-    }
-
-    function AlertSuccess() {
-        if (showAlert) {
-            return (
-                <Alert variant="success" onClose={() => setShowAlert(false)} dismissible>
-                    <Alert.Heading>Estimate Saved!</Alert.Heading>
-                </Alert>
-            );
-        }
-    }
-    function AlertFailure() {
-        if (showFailAlert) {
-            return (
-                <Alert variant="danger" onClose={() => setShowFailAlert(false)} dismissible>
-                    <Alert.Heading>Job Post Failed</Alert.Heading>
-                    <p>
-                        Make sure that you entered all the details for your sticker
-                    </p>
-                </Alert>
-            );
-        }
+            })
     }
 
     const area = width * height;
@@ -163,7 +147,7 @@ function StickerCalc() {
     }
 
 
-    //Get Elements
+    // Get Elements
     // var uploader = document.getElementById("uploader");
     // var fileButton = document.getElementById("fileButton");
 
@@ -202,55 +186,57 @@ function StickerCalc() {
 
     return (
         <div className="row">
-            <div className="p-3 m-3 bg-light col-lg-6 col-md-10 mx-auto rounded-lg shadow-lg">
-            {AlertSuccess()}
-            {AlertFailure()}
-                <div> Width </div>
-                <div className="">
-                    <Form className="form">
-                        <input value={width}
-                            className="shadow rounded"
-                            name="width"
-                            onChange={handleInputChange}
-                            type="number"
-                            placeholder="0.0" />
-                        <br /> <br />
-                        <div>Height</div>
-                        <input value={height}
-                            className="shadow rounded"
-                            name="height"
-                            onChange={handleInputChange}
-                            type="number"
-                            placeholder="0.0" />
-                        <br /> <br />
+            <div className="p-3 m-3 bg-light col-lg-6 col-md-10 col-sm-11 mx-auto rounded-lg shadow-lg">
+                <AlertSuccess showAlert={showAlert} setShowAlert={setShowAlert}/>
+                <AlertFailure showFailAlert={showFailAlert} setShowFailAlert={setShowFailAlert}/>
+  
+                <div style={{ 'margin': 'auto' }}>
+                    <div> Width </div>
+                    <div className="">
+                        <Form className="form">
+                            <input value={width}
+                                className="shadow rounded"
+                                name="width"
+                                onChange={handleInputChange}
+                                type="number"
+                                placeholder="0.0" />
+                            <br /> <br />
+                            <div>Height</div>
+                            <input value={height}
+                                className="shadow rounded"
+                                name="height"
+                                onChange={handleInputChange}
+                                type="number"
+                                placeholder="0.0" />
+                            <br /> <br />
 
-                        <select name="shape" onChange={handleInputChange} className="shadow rounded">
-                            <option value={shape} >Select Shape</option>
-                            <option name="Rectangle" >Rectangle</option>
-                            <option name="Simple Shape" >Simple Shape</option>
-                            <option name="Custom Cut" >Custom Cut</option>
-                        </select><br></br><br></br>
+                            <select name="shape" onChange={handleInputChange} className="shadow rounded">
+                                <option value={shape} >Select Shape</option>
+                                <option name="Rectangle" >Rectangle</option>
+                                <option name="Simple Shape" >Simple Shape</option>
+                                <option name="Custom Cut" >Custom Cut</option>
+                            </select><br></br><br></br>
 
-                        <div> Quantity </div>
-                        <input value={qty}
-                            className="shadow rounded-lg"
-                            name="qty"
-                            onChange={handleInputChange}
-                            type="number"
-                            placeholder="100" />
-                        <br /> <br />
+                            <div> Quantity </div>
+                            <input value={qty}
+                                className="shadow rounded-lg"
+                                name="qty"
+                                onChange={handleInputChange}
+                                type="number"
+                                placeholder="100" />
+                            <br /> <br />
 
+                            <progress value="0" max="100" id="uploader">0%</progress>
+                            <input id="fileButton" onChange={upload} type="file" value="upload" className="shadow rounded" />< br />< br />
 
-                        <progress value="0" max="100" id="uploader">0%</progress>
-                        <input id="fileButton" onChange={upload} type="file" value="upload" className="shadow rounded" />< br />< br />
+                            <div> Shape - {shape}</div>
+                            <div> Sticker Area - {area} inches</div>
+                            <div> Total Area - {totalArea} inches</div>
+                            <div><strong> Total Cost - ${over25k(totalArea)} </strong></div>
 
-                        <div> Shape - {shape}</div>
-                        <div> Sticker Area - {area} inches</div>
-                        <div> Total Area - {totalArea} inches</div>
-                        <div><strong> Total Cost - ${over25k(totalArea)} </strong></div>
-
-                        <button type="submit" onClick={jobdata} >Submit</button>
-                    </Form>
+                            <button type="submit" onClick={jobdata} >Submit</button>
+                        </Form>
+                    </div>
                 </div>
             </div>
         </div>

@@ -21,9 +21,9 @@ export default async function (req, res) {
                     }
                 }
             );
-			res.json(jobsPut);
+            res.json(jobsPut);
             break;
-
+            
         case 'DELETE':
             const jobsDelete = await db.stickerjob.destroy({
 				where: {
@@ -44,6 +44,4 @@ export default async function (req, res) {
 			res.json(jobs);
             break;
     }
-
-
 }
