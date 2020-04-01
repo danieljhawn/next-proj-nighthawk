@@ -4,7 +4,8 @@ import Router from 'next/router'
 import axios from 'axios'
 import { Modal, Button } from 'react-bootstrap'
 import StickerUpdate from './StickerUpdate'
-
+import AlertSuccess from '../components/AlertSuccess'
+import AlertFailure from '../components/AlertFailure'
 
 class Profile extends Component {
     constructor() {
@@ -16,7 +17,9 @@ class Profile extends Component {
             stickerjobs: [],
             errors: {},
             showModal: false,
-            currentJob: {}
+            currentJob: {},
+            showAlert: false,
+            showFailAlert: false
         }
     }
 
@@ -24,7 +27,7 @@ class Profile extends Component {
         const token = localStorage.usertoken
         if (token) {
             const decoded = jwt_decode(token)
-            axios.get("/api/profile", { "headers": {Authorization: `Bearer ${token}`}})
+            axios.get("/api/profile", { "headers": { Authorization: `Bearer ${token}` } })
                 .then(jobs => {
                     this.setState({
                         first_name: decoded.first_name,
@@ -40,7 +43,6 @@ class Profile extends Component {
     }
 
     componentDidMount() {
-        // console.log("component mounted")
         this.getJobs();
     }
 
@@ -60,7 +62,7 @@ class Profile extends Component {
     }
 
     jobEdit = (job) => {
-        this.setState({currentJob: job, showModal: true})
+        this.setState({ currentJob: job, showModal: true })
     }
 
     openModal = () => {
@@ -72,6 +74,15 @@ class Profile extends Component {
 
     }
 
+    setShowAlert = (show) => {
+        this.setState({showAlert: show})
+
+    }
+
+    setShowFailAlert = (show) => {
+        this.setState({showFailAlert: show})
+    }
+
     render() {
         return (<>
 
@@ -80,7 +91,9 @@ class Profile extends Component {
                     <Modal.Title>Edit Job</Modal.Title>
                 </Modal.Header>
                 <Modal.Body>
-                    <StickerUpdate job={this.state.currentJob}/>
+                    <AlertSuccess showAlert={this.state.showAlert} setShowAlert={this.setShowAlert} />
+                    <AlertFailure showFailAlert={this.state.showFailAlert} setShowFailAlert={this.setShowFailAlert} />
+                    <StickerUpdate job={this.state.currentJob} setShowAlert={this.setShowAlert} setShowFailAlert={this.setShowFailAlert} closeModal={this.closeModal} />
                 </Modal.Body>
                 <Modal.Footer>
                     <Button variant="secondary" onClick={this.closeModal}>
@@ -93,7 +106,7 @@ class Profile extends Component {
                 <h4 className="text-center"> Logged in as {this.state.email} </h4>
                 <div className="mt-1 table shadow rounded-lg p-3">
                     <h1 className="text-center"> Your Sticker Jobs </h1>
-                    <table className="table-responsive mx-auto">
+                    <table className="table-responsive">
                         <thead>
                             <tr>
                                 <th>Order #</th>
@@ -108,7 +121,6 @@ class Profile extends Component {
                             </tr>
                         </thead>
                         <tbody>
-                            {/* {console.log("look here", this.state.stickerjobs)} */}
                             {this.state.stickerjobs.reverse().map(job =>
                                 (
                                     <tr key={job.id}>
