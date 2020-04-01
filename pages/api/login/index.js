@@ -16,7 +16,7 @@ export default async function (req, res) {
 
             const result = await bcrypt.compare(req.body.password, user.password)
             if (result) {
-                const token = jwt.sign({ id: user.id, email: user.email }, process.env.secretKey)
+                const token = jwt.sign({ id: user.id, email: user.email }, process.env.SECRET_KEY)
                 res.json({
                     id: user.id,
                     email: user.email,

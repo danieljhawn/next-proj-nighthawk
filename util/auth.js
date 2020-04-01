@@ -4,7 +4,7 @@ export default function Auth(req, res){
     // console.log(req.headers)
     try{
         const token = req.headers.authorization.split(' ')[1]
-        const result = jwt.verify(token, process.env.secretKey);
+        const result = jwt.verify(token, process.env.SECRET_KEY);
         req.auth = result;
     }catch(e){
         // console.error(e);

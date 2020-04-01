@@ -24,7 +24,7 @@ class Profile extends Component {
         const token = localStorage.usertoken
         if (token) {
             const decoded = jwt_decode(token)
-            axios.get("/api/profile", { "headers": { Authorization: `Bearer ${token}` } })
+            axios.get("/api/profile", { "headers": {Authorization: `Bearer ${token}`}})
                 .then(jobs => {
                     this.setState({
                         first_name: decoded.first_name,
