@@ -115,7 +115,6 @@ function StickerCalc() {
     const cost = totalArea * base;
     const totalCost = cost * shapeMulti(cost);
 
-
     const upload = (e) => {
         // const uploader = fileInput.current.focus()
         var file = e.target.files[0];
@@ -145,11 +144,6 @@ function StickerCalc() {
 
         console.log(upload);
     }
-
-
-
-
-
 
     return (
         <div className="row">
@@ -193,8 +187,8 @@ function StickerCalc() {
                                 placeholder="100" />
                             <br /> <br />
 
-                            <progress value="0" max="100" id="uploader">0%</progress>
-                            <input id="fileButton" onChange={upload} type="file" value="" className="shadow rounded" />< br />< br />
+                            <input id="fileButton" onChange={upload} type="file" value="" className="shadow rounded" />< br />
+                            <progress value="0" max="100" id="uploader">0%</progress><br/><br/>
 
                             <div> Shape - {shape}</div>
                             <div> Sticker Area - {area} inches</div>

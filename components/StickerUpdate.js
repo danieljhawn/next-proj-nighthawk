@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Form, Alert } from 'react-bootstrap';
+import { Form } from 'react-bootstrap';
 import axios from "axios";
 
 function StickerUpdate(props) {
@@ -7,8 +7,7 @@ function StickerUpdate(props) {
     const [height, setHeight] = useState(props.job.height);
     const [qty, setQty] = useState(props.job.quantity);
     const [shape, setShape] = useState(props.job.shape);
-    const [showAlert, setShowAlert] = useState(false);
-    const [showFailAlert, setShowFailAlert] = useState(false);
+
     const userId = 1
 
     const handleInputChange = event => {
@@ -87,8 +86,6 @@ function StickerUpdate(props) {
             totalCost: totalCost,
             userId: userId
         }
-
-        console.log("THIS IS MY DATA", data);
 
         axios.put("/api/jobPost/" + props.job.id, data, { headers: { Authorization: `Bearer ${localStorage.getItem('usertoken')}` } })
             .then(

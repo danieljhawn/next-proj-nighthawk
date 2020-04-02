@@ -1,4 +1,4 @@
-import { Navbar, Nav } from "react-bootstrap"
+import { Navbar, Nav, Dropdown, DropdownButton } from "react-bootstrap"
 import Router from 'next/router'
 
 const layoutStyle = {
@@ -22,7 +22,7 @@ const linkStyle = {
   textTransform: 'uppercase',
 }
 
-const logout = function() {
+const logout = function () {
   localStorage.clear();
   Router.replace("/login");
 }
@@ -34,7 +34,16 @@ const Header = () => (
         <Nav.Link href="/">Home</Nav.Link>
         <Nav.Link href="/pricing">Order</Nav.Link>
       </Nav>
-      <Nav.Link href="/Register">Sign Up</Nav.Link> | <Nav.Link href="/login">Log In</Nav.Link> | <Nav.Link onClick={logout}> Log Out</Nav.Link> | <Nav.Link href="/profile"> Profile</Nav.Link>
+      {/* <Nav.Link href="/Register">Sign Up</Nav.Link> | 
+      <Nav.Link href="/login">Log In</Nav.Link> | 
+      <Nav.Link onClick={logout}> Log Out</Nav.Link> | 
+      <Nav.Link href="/profile"> Profile</Nav.Link> */}
+        <DropdownButton id="dropdown-basic-button" title="My Account" variant="secondary">
+          <Dropdown.Item href="/register">Sign Up</Dropdown.Item>
+          <Dropdown.Item href="/login">Login</Dropdown.Item>
+          <Dropdown.Item onClick={logout}>Logout</Dropdown.Item>
+          <Dropdown.Item href="/profile">Profile</Dropdown.Item>
+        </DropdownButton>
     </Navbar>
   </div>
 );
