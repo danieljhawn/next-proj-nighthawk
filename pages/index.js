@@ -4,18 +4,6 @@ import Login from '../components/Login';
 import MyLayout from '../components/MyLayout';
 import GoogleMap from '../components/GoogleMap'
 
-// import {LoadDB} from "../firebase/firedatabase.js;
-// import { loadFirebase } from '../firebase/firedatabase.js';
-
-// export default class Index extends React.Component{
-//   static async getInitialProps() {
-//     let firebase = await loadFirebase()
-//     let db = firebase.firestore() 
-//     db.
-
-//     return{}
-//   }
-
 const Home = () => (
   <>
     <Head>
