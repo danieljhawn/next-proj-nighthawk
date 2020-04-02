@@ -3,7 +3,7 @@ import Card from 'react-bootstrap/Card'
 
 export default function AllCards() {
     return (<>
-    <div  style={{marginRight: "1rem", marginLeft: "1rem", marginTop: "3rem", marginBottom: "1rem"}}>
+    <div  style={{ marginTop: "3rem", marginBottom: "1rem", padding: "1rem"}}>
         <CardDeck>
         <Card>
             <Card.Img variant="top" src="/images/betoForever_sticker10pack__33847.1547494425.305.305.png" />
@@ -14,7 +14,7 @@ export default function AllCards() {
             </Card.Text>
             </Card.Body>
             <Card.Footer>
-            <small className="text-muted">Last updated 3 mins ago</small>
+            <Card.Link href="/pricing">Click here for an estimate</Card.Link>
             </Card.Footer>
         </Card>
         <Card>
@@ -26,7 +26,7 @@ export default function AllCards() {
             </Card.Text>
             </Card.Body>
             <Card.Footer>
-            <small className="text-muted">Last updated 3 mins ago</small>
+            <small className="text-muted">Estimating page coming soon!</small>
             </Card.Footer>
         </Card>
         <Card>
@@ -38,7 +38,7 @@ export default function AllCards() {
             </Card.Text>
             </Card.Body>
             <Card.Footer>
-            <small className="text-muted">Last updated 3 mins ago</small>
+            <small className="text-muted">Estimating page coming soon!</small>
             </Card.Footer>
         </Card>
         </CardDeck>
