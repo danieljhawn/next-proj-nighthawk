@@ -5,7 +5,7 @@ const AnyReactComponent = ({ text }) => (
   <div style={{
     color: 'white', 
     background: '#495c7a',
-    padding: '15px 10px',
+    padding: '1rem',
     display: 'inline-flex',
     textAlign: 'center',
     alignItems: 'center',
@@ -30,11 +30,9 @@ class SimpleMap extends Component {
     return (
       // Important! Always set the container height explicitly
       <div style={{ 
-        height: '50vh', 
-        width: '30%',    
+        height: '100vh', 
+        width: '100%',    
         margin: 'auto',
-        justifyContent: 'center',
-
         }}>
         <GoogleMapReact
           bootstrapURLKeys={{ key: process.env.GOOGLE_MAPS }}
