@@ -147,39 +147,6 @@ function StickerCalc() {
     }
 
 
-    // Get Elements
-    // var uploader = document.getElementById("uploader");
-    // var fileButton = document.getElementById("fileButton");
-
-    //Listen for file selection
-    // fileButton.addEventListener("change", function (e) {
-
-    //     //Get file
-    //     var file = e.target.files[0];
-
-    //     //Create a storage ref
-    //     var storageRef = firebase.storage().ref("nighthawk_uploads/" + file.name);
-
-    //     //Upload file 
-    //     var task = storageRef.put(file);
-
-    //     //Update progress bar
-    //     task.on("state_changed",
-    //         function progress(snapshot) {
-    //             var percentage = (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
-    //             uploader.value = percentage;
-    //         },
-
-    //         function error(err) {
-
-    //         },
-
-    //         function complete() {
-
-    //         }
-    //     )
-
-    // });
 
 
 
@@ -227,7 +194,7 @@ function StickerCalc() {
                             <br /> <br />
 
                             <progress value="0" max="100" id="uploader">0%</progress>
-                            <input id="fileButton" onChange={upload} type="file" value="upload" className="shadow rounded" />< br />< br />
+                            <input id="fileButton" onChange={upload} type="file" value="" className="shadow rounded" />< br />< br />
 
                             <div> Shape - {shape}</div>
                             <div> Sticker Area - {area} inches</div>
