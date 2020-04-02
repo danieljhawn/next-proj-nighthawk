@@ -34,10 +34,6 @@ const Header = () => (
         <Nav.Link href="/">Home</Nav.Link>
         <Nav.Link href="/pricing">Order</Nav.Link>
       </Nav>
-      {/* <Nav.Link href="/Register">Sign Up</Nav.Link> | 
-      <Nav.Link href="/login">Log In</Nav.Link> | 
-      <Nav.Link onClick={logout}> Log Out</Nav.Link> | 
-      <Nav.Link href="/profile"> Profile</Nav.Link> */}
         <DropdownButton id="dropdown-basic-button" title="My Account" variant="secondary">
           <Dropdown.Item href="/register">Sign Up</Dropdown.Item>
           <Dropdown.Item href="/login">Login</Dropdown.Item>
