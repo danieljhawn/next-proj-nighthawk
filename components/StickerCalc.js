@@ -113,7 +113,7 @@ function StickerCalc() {
     const totalArea = area * qty;
     const base = resetBase(totalArea);
     const cost = totalArea * base;
-    const totalCost = cost * shapeMulti(cost);
+    const totalCost = cost * Math.ceil(shapeMulti(cost));
 
     const upload = (e) => {
         // const uploader = fileInput.current.focus()
@@ -193,7 +193,7 @@ function StickerCalc() {
                             <div> Shape - {shape}</div>
                             <div> Sticker Area - {area} inches</div>
                             <div> Total Area - {totalArea} inches</div>
-                            <div><strong> Total Cost - ${over25k(totalArea)} </strong></div>
+                            <div><strong> Total Cost - ${totalCost} </strong></div>
 
                             <button type="submit" onClick={jobdata} >Submit</button>
                         </Form>
