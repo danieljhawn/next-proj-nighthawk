@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import jwt_decode from 'jwt-decode'
 import Router from 'next/router'
 import axios from 'axios'
-import { Modal, Button } from 'react-bootstrap'
+import { Modal, Button, Container } from 'react-bootstrap'
 import StickerUpdate from './StickerUpdate'
 import AlertSuccess from '../components/AlertSuccess'
 import AlertFailure from '../components/AlertFailure'
@@ -102,11 +102,11 @@ class Profile extends Component {
                 </Modal.Footer>
             </Modal>
 
-            <div className="container">
+            <Container>
                 <h4 className="text-center"> Logged in as {this.state.email} </h4>
                 <div className="mt-1 table shadow rounded-lg p-3">
                     <h1 className="text-center"> Your Sticker Jobs </h1>
-                    <table className="table-responsive">
+                    <table className="table-responsive text-center">
                         <thead>
                             <tr>
                                 <th>Order #</th>
@@ -139,7 +139,7 @@ class Profile extends Component {
                         </tbody>
                     </table>
                 </div>
-            </div>
+            </Container>
         </>)
     }
 }
