@@ -1,7 +1,14 @@
 import React, { Component } from 'react'
 import { login } from './UserFunctions'
 import Router from 'next/router'
+import Container from 'react-bootstrap/Container'
 
+const vertCenter = {
+    display: "flex",
+    justifyContent: "center",
+    alignItems: "center"
+    
+}
 // Router.replace("/profile")
 
 class Login extends Component {
@@ -37,9 +44,9 @@ class Login extends Component {
     }
 
     render() {
-        return (
-            <div className="row m-3 p-3">
-                <div className="col-lg-6 col-md-10 rounded-lg bg-light mx-auto shadow-lg">
+        return (<Container>
+            <div className="row m-3 p-5">
+                <div className="col-lg-6 col-md-10 rounded-lg bg-light mx-auto shadow-lg p-3">
                     <form onSubmit={this.onSubmit}>
                         <h3>Sign In</h3>
 
@@ -72,7 +79,7 @@ class Login extends Component {
                     </form>
                 </div>
             </div>
-        )
+            </Container>)
     }
 }
 
