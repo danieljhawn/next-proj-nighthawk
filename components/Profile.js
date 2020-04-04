@@ -7,6 +7,11 @@ import StickerUpdate from './StickerUpdate'
 import AlertSuccess from '../components/AlertSuccess'
 import AlertFailure from '../components/AlertFailure'
 
+// const bgStyle = {
+//     backgroundColor: '#6E6D77',
+//         height: '100vh'
+// }
+
 class Profile extends Component {
     constructor() {
         super()
@@ -103,7 +108,7 @@ class Profile extends Component {
             </Modal>
 
             <Container>
-                <h4 className="text-center"> Logged in as {this.state.email} </h4>
+                <h4 className="text-center bg-light"> Logged in as {this.state.email} </h4>
                 <div className="mt-1 table shadow rounded-lg p-3">
                     <h1 className="text-center"> Your Sticker Jobs </h1>
                     <table className="table-responsive text-center">
