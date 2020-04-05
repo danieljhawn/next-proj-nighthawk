@@ -8,8 +8,6 @@ const bcrypt = require("bcrypt")
 const User = require("../models/User")
 users.use(cors())
 
-process.env.SECRET_KEY = 'anwi28dn089123ASDLlkja'
-
 //REGISTER
 users.post('/register', (req, res) => {
     const today = new Date()
