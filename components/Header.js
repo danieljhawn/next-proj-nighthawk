@@ -35,10 +35,10 @@ const Header = () => (
         <Nav.Link href="/pricing">Order</Nav.Link>
       </Nav>
         <DropdownButton id="dropdown-basic-button" title="My Account" variant="secondary">
-          <Dropdown.Item href="/api/register">Sign Up</Dropdown.Item>
-          <Dropdown.Item href="/api/login">Login</Dropdown.Item>
+          <Dropdown.Item href="/register">Sign Up</Dropdown.Item>
+          <Dropdown.Item href="/login">Login</Dropdown.Item>
           <Dropdown.Item onClick={logout}>Logout</Dropdown.Item>
-          <Dropdown.Item href="/api/profile">Profile</Dropdown.Item>
+          <Dropdown.Item href="/profile">Profile</Dropdown.Item>
         </DropdownButton>
     </Navbar>
   </div>

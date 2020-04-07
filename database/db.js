@@ -3,6 +3,7 @@ const db = {}
 const sequelize = new Sequelize("nodejs_login1", "root", "", {
     host: "localhost",
     dialect: "mysql",
+    dialectModule: require('mysql2'),
     operatorsAliases: false,
 
     pool: {
