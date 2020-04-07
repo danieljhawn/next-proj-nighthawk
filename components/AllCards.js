@@ -14,7 +14,7 @@ export default function AllCards() {
             </Card.Text>
             </Card.Body>
             <Card.Footer>
-            <Card.Link href="/pricing">Click here for an estimate</Card.Link>
+            <Card.Link href="/api/pricing">Click here for an estimate</Card.Link>
             </Card.Footer>
         </Card>
         <Card>
