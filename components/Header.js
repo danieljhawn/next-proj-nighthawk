@@ -32,13 +32,13 @@ const Header = () => (
     <Navbar fixed="top" bg="dark" variant="dark">
       <Nav className="mr-auto">
         <Nav.Link href="/">Home</Nav.Link>
-        <Nav.Link href="/pricing">Order</Nav.Link>
+        <Nav.Link href="/Pricing">Order</Nav.Link>
       </Nav>
         <DropdownButton id="dropdown-basic-button" title="My Account" variant="secondary">
-          <Dropdown.Item href="/register">Sign Up</Dropdown.Item>
-          <Dropdown.Item href="/login">Login</Dropdown.Item>
+          <Dropdown.Item href="/Register">Sign Up</Dropdown.Item>
+          <Dropdown.Item href="/Login">Login</Dropdown.Item>
           <Dropdown.Item onClick={logout}>Logout</Dropdown.Item>
-          <Dropdown.Item href="/profile">Profile</Dropdown.Item>
+          <Dropdown.Item href="/Profile">Profile</Dropdown.Item>
         </DropdownButton>
     </Navbar>
   </div>
