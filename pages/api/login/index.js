@@ -5,7 +5,7 @@ import jwt from "jsonwebtoken"
 const env = process.env.NODE_ENV || 'development';
 
 export default async function (req, res) {
-
+try {
     switch (req.method) {
         case 'POST':
             const user = await db.user.findOne({
@@ -13,7 +13,9 @@ export default async function (req, res) {
                     email: req.body.email,
                 }
             });
-
+            if(!user){
+                res.status(401).send("user not found")
+            }
             const result = await bcrypt.compare(req.body.password, user.password)
             if (result) {
                 const token = jwt.sign({ id: user.id, email: user.email }, process.env.SECRET_KEY)
@@ -30,5 +32,8 @@ export default async function (req, res) {
         default:
             break;
     }
-
+} catch (e) {
+    res.send(e.toString())
+    
+}
 }
