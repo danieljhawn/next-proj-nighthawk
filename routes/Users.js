@@ -32,7 +32,7 @@ users.post('/register', (req, res) => {
                 userData.password = hash
                 User.create(userData)
                     .then(user => {
-                        let token = jwt.sign(user.dataValues, process.env.SECRET_KEY, {
+                        let token = jwt.sign(user.dataValues, process.env.secret_key, {
                             expiresIn: 1440
                         })
                         res.json({ token: token })
@@ -58,7 +58,7 @@ users.post('/login', (req, res) => {
         })
         .then(user => {
             if (bcrypt.compareSync(req.body.password, user.password)) {
-                let token = jwt.sign(user.dataValues, process.env.SECRET_KEY, {
+                let token = jwt.sign(user.dataValues, process.env.secret_key, {
                     expiresIn: 1440
                 })
                 res.json({ token: token })
@@ -73,7 +73,7 @@ users.post('/login', (req, res) => {
 
 //PROFILE
 users.get('/profile', (req, res) => {
-    var decoded = jwt.verify(req.headers['authorization'], process.env.SECRET_KEY)
+    var decoded = jwt.verify(req.headers['authorization'], process.env.secret_key)
 
     User.findOne({
             where: {
