@@ -30,7 +30,7 @@ export default function AllCards() {
             </Card.Footer>
         </Card>
         <Card>
-            <Card.Img variant="top" src="/images/cuppajoe.jpg" />
+            <Card.Img variant="top" src="/images/cuppaJoe.jpg" />
             <Card.Body>
             <Card.Title>Misc Items</Card.Title>
             <Card.Text>
